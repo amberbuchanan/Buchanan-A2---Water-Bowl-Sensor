@@ -12,7 +12,7 @@ int b=1.875;
 int c=1.25;
 int d=0;
 
-int max_distance = 200;
+int max_distance = 10;
 
 void setup() {
   // put your setup code here, to run once:
