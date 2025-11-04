@@ -1,3 +1,5 @@
+// code sourced from https://www.instructables.com/Ultrasonic-Water-Level-Indicator-Using-HC-SR04-Ard/ unless otherwise identified
+
 //identifying pin 2 as constant trigger pin input, and pin 3 as constant echo pin input 
 const int trigPin = 2;  
 const int echoPin = 3; 
@@ -7,10 +9,8 @@ int ledY=11; //identifying pin 11 LED 2 (named Y to signal yellow LED)
 
 //setting the distance for the LEDs to light up - height of the bowl in inches 
 //added own measurement values 
-int a=2.5; 
-int b=1.875; 
-int c=1.25;
-int d=0;
+int a=1.25; 
+int b=0; 
 
 int max_distance = 5;
 
@@ -57,10 +57,9 @@ Serial.println();
 delay(100);
 }
 //digitalWrite (ledA,HIGH);
-if (inches >=a) {digitalWrite (ledR,HIGH);digitalWrite (ledY,LOW); }  
-else if (inches >=b){digitalWrite (ledR,LOW);digitalWrite (ledY,HIGH);  } 
-else if (inches >=c){digitalWrite (ledR,LOW);digitalWrite (ledY,LOW); } 
-else if (inches >=d){digitalWrite (ledR,LOW);digitalWrite (ledY,LOW); } 
+// adjustted height intervals, removed intervals C and D, added own LED labels, set which LED would be lit 
+if (inches >=a) {digitalWrite (ledR,HIGH);digitalWrite (ledY,LOW); }  //if the distance meausred is greather than or equal to 1.25 inches, the yellow LED will be lit 
+else if (inches >=b){digitalWrite (ledR,LOW);digitalWrite (ledY,HIGH);  }  //if the distance is greater than or equal to 0, the red LED will be lit 
 //else {digitalWrite (ledA,HIGH);digitalWrite (ledB,HIGH); } 
 
 }
@@ -80,4 +79,3 @@ long microsecondsToCentimeters(long microseconds) {
   // object we take half of the distance travelled.
   return (microseconds / 29) / 2;
 }
-
